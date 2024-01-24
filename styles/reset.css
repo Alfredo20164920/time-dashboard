@@ -7,6 +7,7 @@
     --lime-green: #4BCF82;
     --violet: #7335d2;
     --soft-orange: #F1C75B;
+    --blue: #5747EA;
 
     --primary: #1c204b;
     --secondary: #7078c9;
@@ -16,11 +17,17 @@
     --white: #ffffff;
 }
 
+html {
+    font-size: 62.5%;
+}
+
 
 * {
     min-width: 0;
     font: inherit;
     font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 *, *::after, *::before {
@@ -44,4 +51,5 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     text-wrap: pretty;
+    font-size: 1.5rem;
 }

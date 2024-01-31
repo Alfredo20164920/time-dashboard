@@ -12,7 +12,7 @@ body {
   display: grid;
   width: 100%;
   max-width: 1110px;
-  margin: 0 24px;
+  margin: 24px;
   grid-template-columns: 1fr;
   gap: 2.4rem;
 }
@@ -66,6 +66,12 @@ body {
 
     .option {
       color: var(--secondary);
+      border: 1px solid transparent;
+    }
+
+    .option:hover {
+      color: var(--white);
+      border-bottom: 1px solid var(--white);
     }
 
     .option--active {
@@ -75,7 +81,6 @@ body {
 }
 
 .item {
-	background-color: var(--light-red);
 	border-radius: 15px;
 }
 

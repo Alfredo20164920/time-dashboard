@@ -1,4 +1,5 @@
 @import url("./reset.css");
+@import url("./responsive.css");
 
 body {
   background: var(--dark);
@@ -20,6 +21,8 @@ body {
 .dashboard__profile {
   background: var(--primary);
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
 
   .user {
     background: var(--blue);
@@ -31,16 +34,12 @@ body {
 
     padding: 30px 25px;
 
-    .user__logo {
-      & img {
+    .user__logo  img {
         width: 64px;
-        max-width: 78px;
         height: 64px;
-        max-height: 78px;
 
         border-radius: 50%;
         border: 2px solid var(--white);
-      }
     }
 
     .user__info {
@@ -59,9 +58,8 @@ body {
 
   .options {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 24px 0;
 
     .option {
@@ -95,7 +93,6 @@ body {
 		height: 90px;
 		position: absolute;
 		right: 10px;
-		/* top: -10px; */
 	}
 }
 

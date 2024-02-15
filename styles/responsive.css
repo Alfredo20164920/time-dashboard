@@ -1,21 +1,17 @@
 @media screen and (min-width: 580px) {
-    .dashboard {
-        grid-template-columns: repeat(2, minmax(255px, 1fr));
-    }
 
-    .dashboard__profile {
-        grid-column-start: 1;
-        grid-column-end: 3;
+    .tasks {
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
 
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 824px) {
     .dashboard {
-        grid-template-columns: repeat(4, 1fr);
+        flex-direction: row;
     }
 
-    .dashboard__profile {
+    .profile {
         grid-column: auto;
         grid-row-start: 1;
         grid-row-end: 3;
@@ -47,6 +43,11 @@
         }
         
         
+    }
+
+    .tasks {
+        grid-template-columns: repeat(3, 1fr);
+        flex-grow: 1;
     }
 
 

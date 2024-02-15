@@ -61,15 +61,15 @@ body {
     align-items: center;
     justify-content: space-evenly;
     padding: 24px 0;
-
-    .option {
-      color: var(--secondary);
-      border: 1px solid transparent;
-    }
+    list-style: none;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--secondary);
+    border: 1px solid transparent;
+    cursor: pointer;
 
     .option:hover {
       color: var(--white);
-      border-bottom: 1px solid var(--white);
     }
 
     .option--active {

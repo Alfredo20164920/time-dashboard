@@ -7,32 +7,40 @@ const colors = {
     "Self Care": "#F1C75B",
 }
 
-const activeOption = document.getElementById("active");
 
 
-function handleActive() {
-    const options = document.getElementsByClassName("option");
-    for(let i in options){
-        
-    }
-}
-
-handleActive()
+fetchData("daily");
 
 
-function fetchData () {
+function fetchData (activeOption) {
     fetch("../data/data.json")
     .then((response) => response.json())
     .then((data) => {
         data.forEach((item) => {
-            buildStaticData(item);
+            buildData(item, activeOption);
         });
     });
 }
 
-fetchData();
+const weeklyOption = document.getElementById("weekly");
+const dailyOption = document.getElementById("daily");
+const monthlyOption = document.getElementById("monthly");
 
-function buildStaticData(item) {
+dailyOption.addEventListener("click", () => handleActive(dailyOption));
+weeklyOption.addEventListener("click", () => handleActive(weeklyOption));
+monthlyOption.addEventListener("click", () => handleActive(monthlyOption));
+console.log(dailyOption.id)
+
+function handleActive(item) {
+    const prevActiveOption = document.getElementsByClassName("option--active");
+    prevActiveOption[0].classList.remove("option--active");
+    item.classList.add("option--active");
+    fetchData(item.id);
+}
+
+
+
+function buildData(item, option) {
 
     const parent = document.getElementById("dashboard");
 
@@ -40,6 +48,7 @@ function buildStaticData(item) {
     const container = document.createElement("section");
     container.style.backgroundColor = colors[item.title];
     container.className = "item";
+    container.id = item.title.toLowerCase().replace(" ", "-");
 
     /* Head */
     const headContainer = document.createElement("div");
@@ -59,21 +68,16 @@ function buildStaticData(item) {
     `;
     infoContainer.innerHTML = staticData;
 
-    // const dynamicData = `
-    //     <div>
-    //         <h4 class="item__time">${item.timeframes.weekly.current}</h4>
-    //         <p class="item__prev-time">Previous - ${item.timeframes.weekly.previous}</p>
-    //     </div>
-    // `;
+    const dynamicData = `
+        <div>
+            <h4 class="item__time">${item.timeframes[option].current}hrs</h4>
+            <p class="item__prev-time">Previous - ${item.timeframes[option].previous}</p>
+        </div>
+    `;
 
-    // infoContainer.innerHTML += dynamicData;
+    infoContainer.innerHTML += dynamicData;
 
     /* Join data */
     container.append(headContainer, infoContainer)
-    parent.append(container)
-}
-
-
-function dynamicData() {
-
+    parent.appendChild(container)
 }

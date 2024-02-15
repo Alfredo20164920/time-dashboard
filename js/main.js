@@ -7,20 +7,10 @@ const colors = {
     "Self Care": "#F1C75B",
 }
 
+const selectedOption = document.getElementsByClassName("option--active");
+fetchData(selectedOption[0].id);
 
-
-fetchData("daily");
-
-
-function fetchData (activeOption) {
-    fetch("../data/data.json")
-    .then((response) => response.json())
-    .then((data) => {
-        data.forEach((item) => {
-            buildData(item, activeOption);
-        });
-    });
-}
+const tasksContainer = document.getElementById("tasks");
 
 const weeklyOption = document.getElementById("weekly");
 const dailyOption = document.getElementById("daily");
@@ -29,7 +19,23 @@ const monthlyOption = document.getElementById("monthly");
 dailyOption.addEventListener("click", () => handleActive(dailyOption));
 weeklyOption.addEventListener("click", () => handleActive(weeklyOption));
 monthlyOption.addEventListener("click", () => handleActive(monthlyOption));
-console.log(dailyOption.id)
+
+
+
+
+
+function fetchData (activeOption) {
+    fetch("../data/data.json")
+    .then((response) => response.json())
+    .then((data) => {
+
+        tasksContainer.innerHTML = "";
+
+        data.forEach((item) => {
+            tasksContainer.append((buildData(item, activeOption)));
+        });
+    });
+}
 
 function handleActive(item) {
     const prevActiveOption = document.getElementsByClassName("option--active");
@@ -40,9 +46,9 @@ function handleActive(item) {
 
 
 
-function buildData(item, option) {
 
-    const parent = document.getElementById("dashboard");
+
+function buildData(item, option) {
 
     /* Section container */
     const container = document.createElement("section");
@@ -78,6 +84,6 @@ function buildData(item, option) {
     infoContainer.innerHTML += dynamicData;
 
     /* Join data */
-    container.append(headContainer, infoContainer)
-    parent.appendChild(container)
+    container.append(headContainer, infoContainer);
+    return container;
 }

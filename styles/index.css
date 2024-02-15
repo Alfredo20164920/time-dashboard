@@ -10,15 +10,15 @@ body {
 }
 
 .dashboard {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 1110px;
   margin: 24px;
-  grid-template-columns: 1fr;
   gap: 2.4rem;
 }
 
-.dashboard__profile {
+.profile {
   background: var(--primary);
   border-radius: 15px;
   display: flex;
@@ -78,59 +78,74 @@ body {
   }
 }
 
-.item {
-	border-radius: 15px;
-}
+.tasks {
+  display: grid;
+  gap: 2.4rem;
 
-.item__head {
-	position: relative;
+  .item {
+    border-radius: 15px;
+  }
+  
+  .item__head {
+    position: relative;
+  
+    height: 40px;
+    z-index: 0;
+  
+    img {
+      width: 90px;
+      height: 90px;
+      position: absolute;
+      right: 10px;
+    }
+  }
+  
+  .item__info {
+    position: relative;
+    background-color: var(--primary);
+    border-radius: 15px;
+    z-index: 80;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
-	height: 40px;
-	z-index: 0;
+    &:hover {
+      background: var(--hover-card);
+      cursor: pointer;
+    }
+  
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    img {
+      width: 21px;
+      height: 5px;
 
-	img {
-		width: 90px;
-		height: 90px;
-		position: absolute;
-		right: 10px;
-	}
-}
-
-.item__info {
-	position: relative;
-	background-color: var(--primary);
-	border-radius: 15px;
-	z-index: 80;
-	padding: 24px;
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-
-	div {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	img {
-		width: 21px;
-		height: 5px;
-	}
-
-	.item__title {
-		font-size: 1.8rem;
-		font-weight: 400;
-	}
-
-	.item__time {
-		font-size: 3.2rem;
-		font-weight: 300;
-	}
-
-	.item__prev-time {
-		font-size: 1.5rem;
-		font-weight: 400;
-		color: var(--tertiary);
-	}
+      &:hover {
+        filter: brightness(0) invert(1);
+      }
+    }
+  
+    .item__title {
+      font-size: 1.8rem;
+      font-weight: 400;
+    }
+  
+    .item__time {
+      font-size: 3.2rem;
+      font-weight: 300;
+    }
+  
+    .item__prev-time {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--tertiary);
+    }
+  }
+  
 }

@@ -1,3 +1,5 @@
+import json from "./../data/data.json" assert {type: 'json'};
+
 const colors = {
     "Work": "#FF8B64",
     "Play": "#55C2E6",
@@ -20,12 +22,8 @@ dailyOption.addEventListener("click", () => handleActive(dailyOption));
 weeklyOption.addEventListener("click", () => handleActive(weeklyOption));
 monthlyOption.addEventListener("click", () => handleActive(monthlyOption));
 
-
-
-
-
 function fetchData (activeOption) {
-    fetch("../data/data.json")
+    fetch(json)
     .then((response) => response.json())
     .then((data) => {
 

@@ -109,6 +109,11 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    &:hover {
+      background: var(--hover-card);
+      cursor: pointer;
+    }
   
     div {
       display: flex;
@@ -120,6 +125,10 @@ body {
     img {
       width: 21px;
       height: 5px;
+
+      &:hover {
+        filter: brightness(0) invert(1);
+      }
     }
   
     .item__title {
@@ -140,4 +149,3 @@ body {
   }
   
 }
-
